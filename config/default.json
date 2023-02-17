@@ -1,0 +1,15 @@
+{
+    "db-connections": {
+      "mongodb": {
+        "host": "cluster0.kuhqv11.mongodb.net",
+        "user": "rest_api_user",
+        "password": "VYwDdF6H4p7t3FLu",
+        "dbname": "AcademicDB"
+      }
+    },
+    "secretkeys": {
+      "cryptojs": "7wgRgfesM4EZST"
+    },
+    "server-port":3000
+  
+  }
