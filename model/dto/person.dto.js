@@ -1,10 +1,8 @@
 /**packages */
 const mongoose = require("mongoose");
-const db = require("../db-connection/mongodb");
 
 /** using schema */
 const schema = require("../schemas/persona.schema");
-db();
 
 schema.statics = {
   create: async function (data, cb) {
@@ -43,13 +41,6 @@ schema.statics = {
       throw error;
     }
   },
-  // getByCode: function (query, cb) {
-  //   try {
-  //     this.find(query, cb);
-  //   } catch (error) {
-  //     throw error;
-  //   }
-  // },
 };
 
 const dto = mongoose.model("Person", schema);
