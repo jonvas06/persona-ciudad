@@ -14,9 +14,9 @@ module.exports.create = (req, res) => {
       id_ciudad,
     };
 
-    //TODO: Buscar si la ciudad existe
-    // const city = cityDto.findById(id_ciudad, () => {
-    //   if (!city) {
+    // TODO: Buscar si la ciudad existe, VERIFICAR SI SI RETTORNA
+    // cityDto.findById(id_ciudad, (err, data) => {
+    //   if (err) {
     //     return res.status(400).json({
     //       message: "la ciudad a la que quiere asociar la persona no existe",
     //     });
@@ -39,9 +39,6 @@ module.exports.create = (req, res) => {
         data: data,
       });
     });
-
-    console.log(req.body);
-    return res.status(200).send(data);
   } catch (error) {
     console.log(`Error → ${error}`);
   }
@@ -49,6 +46,16 @@ module.exports.create = (req, res) => {
 
 module.exports.getAll = (req, res) => {
   try {
+    personDto.getAll({}, (err, data) => {
+      if (err) {
+        return res.status(400).json({
+          error: err,
+        });
+      }
+      res.status(201).json({
+        data: data,
+      });
+    });
   } catch (error) {
     console.log(`Error → ${error}`);
   }

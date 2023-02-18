@@ -7,7 +7,7 @@ module.exports = (app) => {
     app.post('/api/v1/person', (req, res)=> {
         controller.create(req, res);
     })
-    app.update('/api/v1/person/:id', (req, res)=> {
+    app.patch('/api/v1/person/:id', (req, res)=> {
         controller.update(req, res);
     })
     app.delete('/api/v1/person/:id', (req, res)=> {
