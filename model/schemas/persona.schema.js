@@ -36,7 +36,7 @@ const personaSchema= new mongoose.Schema({
     },
     id_ciudad:{
         type: mongoose.Schema.Types.ObjectId,
-        ref:"ciudad",
+        ref:"Ciudad",
         required: true,
     }
 });
