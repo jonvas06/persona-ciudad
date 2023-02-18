@@ -1,4 +1,4 @@
-const controller = require('../controller/logic/persona.controller.js');
+const controller = require('../controller/logic/person.controller.js');
 
 module.exports = (app) => {
     

@@ -1,7 +1,7 @@
 const express = require('express')
 const config = require('config');
 const dbConnection = require('./model/db-connection/mongodb.js');
-const personRouter  = require('./routes/persona.routes.js');
+const personRouter  = require('./routes/person.routes.js');
 
 const app = express()
 

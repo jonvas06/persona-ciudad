@@ -108,9 +108,7 @@ module.exports.getWithCity = (req, res) => {
 module.exports.update = (req, res) => {
   try {
     const { id } = req.params;
-    const { body } = req;
-
-    console.log(id);
+    const { body } = req;   
 
     personDto.update({ _id: id }, body, (err, data) => {
       if (err) {
