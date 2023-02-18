@@ -24,6 +24,10 @@ const personSchema = new mongoose.Schema({
     type: "String",
     required: true,
   },
+  direction:{
+    type:"String",
+    required:true,
+  },
   id_ciudad: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "City",
