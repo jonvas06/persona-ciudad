@@ -16,11 +16,6 @@ const personaSchema= new mongoose.Schema({
         type: "String",
         required: true
     },
-    id:{
-        type: "String",
-        required: true,
-        unique:true
-    }, 
     email:{
         type: "String",
         required: true
@@ -28,11 +23,6 @@ const personaSchema= new mongoose.Schema({
     phone:{
         type: "String",
         required: true
-    },
-    password:{
-        type: "String",
-        required: true,
-        
     },
     id_ciudad:{
         type: mongoose.Schema.Types.ObjectId,
