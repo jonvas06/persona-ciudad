@@ -2,6 +2,7 @@
 const mongoose= require("mongoose");
 const config= require("config");
 
+mongoose.set('strictQuery', false);
 const mongodbInfo= config.get("db-connections.mongodb")
 
 const connStr= `mongodb+srv://${mongodbInfo.user}:${mongodbInfo.password}@${mongodbInfo.host}/${mongodbInfo.dbname}?retryWrites=true&w=majority`;
