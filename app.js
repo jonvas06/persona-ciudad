@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require('cors')
 const config = require("config");
 const dbConnection = require("./model/db-connection/mongodb.js");
 const personRouter = require("./routes/person.routes.js");
@@ -8,7 +9,13 @@ const app = express();
 //DB Connnection
 dbConnection();
 
+let corsOptions = {
+  origin: '*',
+  optionsSuccessStatus: 200
+}
+
 //middlewares
+app.use(cors(corsOptions))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

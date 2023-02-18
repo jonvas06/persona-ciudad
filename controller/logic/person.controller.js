@@ -99,6 +99,11 @@ module.exports.getWithCity = (req, res) => {
             "La persona y su ciudad de residencia no pudieron ser obtenidas",
         });
       }
+      
+      res.status(200).json({
+        message: "Persona con ciudad de residencia obtenida con éxito",
+        data: data,
+      });
     });
   } catch (error) {
     console.log(`Error → ${error}`);
