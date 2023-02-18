@@ -12,7 +12,9 @@ const app = express()
 //middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 personRouter(app);
+
 app.get('/api/v1/', function (req, res) {
   res.send('Home page')
 })

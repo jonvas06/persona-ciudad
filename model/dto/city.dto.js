@@ -34,6 +34,7 @@ schema.statics = {
       throw error;
     }
   },
+  //TODO: Crear findById(id, cb)
   // getByCode: function (query, cb) {
   //   this.find(query, cb);
   // },
