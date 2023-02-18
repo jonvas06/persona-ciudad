@@ -36,9 +36,9 @@ schema.statics = {
       throw error;
     }
   },
-  delete: function (query, cb) {
+  delete: function (id, cb) {
     try {
-      this.findOneAndDelete(query);
+      this.findByIdAndDelete(id, cb);
     } catch (error) {
       throw error;
     }

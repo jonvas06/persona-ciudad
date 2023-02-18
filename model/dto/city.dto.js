@@ -35,8 +35,12 @@ schema.statics = {
     }
   },
   getById: function (query, cb) {
-    this.findById(query, cb);
-  }
+    try {
+      this.findById(query, cb);
+    } catch (error) {
+      throw error;
+    }
+  },
 };
 
 const dto = mongoose.model("City", schema);

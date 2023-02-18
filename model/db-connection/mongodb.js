@@ -7,7 +7,6 @@ const mongodbInfo= config.get("db-connections.mongodb")
 
 const connStr= `mongodb+srv://${mongodbInfo.user}:${mongodbInfo.password}@${mongodbInfo.host}/${mongodbInfo.dbname}?retryWrites=true&w=majority`;
 
-console.log(connStr);
 module.exports= ()=>{
     mongoose.connect(connStr);
 
