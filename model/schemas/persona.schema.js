@@ -29,7 +29,7 @@ const personSchema = new mongoose.Schema({
     type:"String",
     required:true,
   },
-  id_ciudad: {
+  city: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "City",
     required: true,

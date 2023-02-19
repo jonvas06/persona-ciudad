@@ -22,7 +22,7 @@ schema.statics = {
   },
   getWithCity: function (id, cb) {
     try {
-      this.findById(id).populate("id_ciudad").exec(cb);
+      this.findById(id).populate("city").exec(cb);
     } catch (error) {
       throw error;
     }

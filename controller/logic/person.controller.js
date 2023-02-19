@@ -3,7 +3,7 @@ const cityDto = require("../../model/dto/city.dto.js");
 
 module.exports.create = (req, res) => {
   try {
-    const { name, lastname, age, email, phone, direction, id_ciudad } =
+    const { name, lastname, age, email, phone, direction, city } =
       req.body;
 
     const person = {
@@ -13,10 +13,10 @@ module.exports.create = (req, res) => {
       email,
       phone,
       direction,
-      id_ciudad,
+      city,
     };
 
-    cityDto.getById(id_ciudad, (err, data) => {
+    cityDto.getById(city, (err, data) => {
       if (err) {
         return res.status(400).json({
           message: "Ocurrió un error al buscar la ciudad",

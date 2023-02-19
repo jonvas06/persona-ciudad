@@ -1,36 +1,31 @@
-const personDto = require("../../model/dto/person.dto.js");
 const cityDto = require("../../model/dto/city.dto.js");
 
 module.exports.create = (req, res) => {
   try {
-    const {name } =
-      req.body;
+    const { name } = req.body;
 
     const ciudad = {
-        name
+      name,
     };
 
-      cityDto.create(ciudad, (err, data) => {
-        if (err) {
-            let key = Object.keys(err.keyValue)[0];
-            res.statusMessage = `Ya existe una cuidad con ${key} : ${err.keyValue[key]}`;
-
-          return res.status(400).json({
-            error: err,
-          });
-        }
-
-        if (!data) {
-            return res.status(400).json({
-              message: "La cuidad no pudo ser creada",
-            });
-        }
-
-        return res.status(201).json({
-          message: "cuidad creada con éxito",
-          data: data,
+    cityDto.create(ciudad, (err, data) => {
+      if (err) {
+        return res.status(400).json({
+          error: err,
         });
+      }
+
+      if (!data) {
+        return res.status(400).json({
+          message: "La cuidad no pudo ser creada",
+        });
+      }
+
+      return res.status(201).json({
+        message: "cuidad creada con éxito",
+        data: data,
       });
+    });
   } catch (error) {
     console.log(`Error → ${error}`);
   }
@@ -64,7 +59,7 @@ module.exports.getAll = (req, res) => {
 module.exports.update = (req, res) => {
   try {
     const { id } = req.params;
-    const { body } = req;   
+    const { body } = req;
 
     cityDto.update({ _id: id }, body, (err, data) => {
       if (err) {
@@ -72,12 +67,14 @@ module.exports.update = (req, res) => {
           error: err,
         });
       }
+
       if (!data) {
         return res.status(400).json({
           message:
             "La cuidad no pudo ser actualizada, revisa que el ID que sea el correcto",
         });
       }
+
       return res.status(200).json({
         message: "cuidad editada con éxito",
         data: data,
@@ -98,13 +95,15 @@ module.exports.delete = (req, res) => {
           error: err,
         });
       }
+
       if (!data) {
         return res.status(400).json({
           message:
             "La cuidad no pudo ser eliminada, revisa que el ID que sea el correcto",
         });
       }
-      res.status(200).json({
+
+      return res.status(200).json({
         message: "cuidad eliminada con éxito",
         data: data,
       });
