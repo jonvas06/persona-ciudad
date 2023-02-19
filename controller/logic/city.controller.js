@@ -12,22 +12,21 @@ module.exports.create = (req, res) => {
 
       cityDto.create(ciudad, (err, data) => {
         if (err) {
-          if (err.code == 11000) {
             let key = Object.keys(err.keyValue)[0];
             res.statusMessage = `Ya existe una cuidad con ${key} : ${err.keyValue[key]}`;
-          }
 
-          if (!data) {
-            return res.status(400).json({
-              message: "La cuidad no pudo ser creada",
-            });
-          }
           return res.status(400).json({
             error: err,
           });
         }
 
-        res.status(201).json({
+        if (!data) {
+            return res.status(400).json({
+              message: "La cuidad no pudo ser creada",
+            });
+        }
+
+        return res.status(201).json({
           message: "cuidad creada con éxito",
           data: data,
         });
@@ -52,7 +51,7 @@ module.exports.getAll = (req, res) => {
         });
       }
 
-      res.status(200).json({
+      return res.status(200).json({
         message: "cuidades obtenidas con éxito",
         data: data,
       });
@@ -79,7 +78,7 @@ module.exports.update = (req, res) => {
             "La cuidad no pudo ser actualizada, revisa que el ID que sea el correcto",
         });
       }
-      res.status(200).json({
+      return res.status(200).json({
         message: "cuidad editada con éxito",
         data: data,
       });
