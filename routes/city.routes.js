@@ -18,7 +18,4 @@ module.exports = (app) => {
         controller.delete(req, res);
     })
 
-    /* app.delete('/api/v1/person/getWithCity/:id', (req, res)=> {
-        controller.getWithCity(req, res);
-    }) */
 }

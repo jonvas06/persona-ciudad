@@ -10,19 +10,6 @@ module.exports.create = (req, res) => {
         name
     };
 
-    /* cityDto.getById(name, (err, data) => {
-      if (err) {
-        return res.status(400).json({
-          message: "Ocurrió un error al buscar la ciudad",
-        });
-      }
-
-      if (!data) {
-        return res.status(400).json({
-          message: "la ciudad no existe",
-        });
-      } */
-
       cityDto.create(ciudad, (err, data) => {
         if (err) {
           if (err.code == 11000) {
@@ -45,7 +32,6 @@ module.exports.create = (req, res) => {
           data: data,
         });
       });
-    /* }); */
   } catch (error) {
     console.log(`Error → ${error}`);
   }
@@ -75,34 +61,6 @@ module.exports.getAll = (req, res) => {
     console.log(`Error → ${error}`);
   }
 };
-
-/* module.exports.getWithCity = (req, res) => {
-  try {
-    const { id } = req.params;
-
-    cityDto.getWithCity(id, (err, data) => {
-      if (err) {
-        return res.status(400).json({
-          error: err,
-        });
-      }
-
-      if (!data) {
-        return res.status(400).json({
-          message:
-            "La persona y su ciudad de residencia no pudieron ser obtenidas",
-        });
-      }
-      
-      res.status(200).json({
-        message: "Persona con ciudad de residencia obtenida con éxito",
-        data: data,
-      });
-    });
-  } catch (error) {
-    console.log(`Error → ${error}`);
-  }
-}; */
 
 module.exports.update = (req, res) => {
   try {
