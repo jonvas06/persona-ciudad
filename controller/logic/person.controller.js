@@ -31,22 +31,18 @@ module.exports.create = (req, res) => {
 
       personDto.create(person, (err, data) => {
         if (err) {
-          if (err.code == 11000) {
-            let key = Object.keys(err.keyValue)[0];
-            res.statusMessage = `Ya existe una persona con ${key} : ${err.keyValue[key]}`;
-          }
-
-          if (!data) {
-            return res.status(400).json({
-              message: "La persona no pudo ser creada",
-            });
-          }
           return res.status(400).json({
             error: err,
           });
         }
 
-        res.status(201).json({
+        if (!data) {
+          return res.status(400).json({
+            message: "La persona no pudo ser creada",
+          });
+        }
+
+        return res.status(201).json({
           message: "Persona creada con éxito",
           data: data,
         });
@@ -72,7 +68,7 @@ module.exports.getAll = (req, res) => {
         });
       }
 
-      res.status(200).json({
+      return res.status(200).json({
         message: "Personas obtenidas con éxito",
         data: data,
       });
@@ -99,8 +95,8 @@ module.exports.getWithCity = (req, res) => {
             "La persona y su ciudad de residencia no pudieron ser obtenidas",
         });
       }
-      
-      res.status(200).json({
+
+      return res.status(200).json({
         message: "Persona con ciudad de residencia obtenida con éxito",
         data: data,
       });
@@ -113,7 +109,7 @@ module.exports.getWithCity = (req, res) => {
 module.exports.update = (req, res) => {
   try {
     const { id } = req.params;
-    const { body } = req;   
+    const { body } = req;
 
     personDto.update({ _id: id }, body, (err, data) => {
       if (err) {
@@ -127,7 +123,7 @@ module.exports.update = (req, res) => {
             "La persona no pudo ser actualizada, revisa que el ID que sea el correcto",
         });
       }
-      res.status(200).json({
+      return res.status(200).json({
         message: "Persona editada con éxito",
         data: data,
       });
@@ -147,13 +143,15 @@ module.exports.delete = (req, res) => {
           error: err,
         });
       }
+
       if (!data) {
         return res.status(400).json({
           message:
             "La persona no pudo ser eliminada, revisa que el ID que sea el correcto",
         });
       }
-      res.status(200).json({
+
+      return res.status(200).json({
         message: "Persona eliminada con éxito",
         data: data,
       });
