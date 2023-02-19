@@ -29,7 +29,3 @@ module.exports= ()=>{
     })
 
 }
-
-
-// user: rest_api_user
-// password: VYwDdF6H4p7t3FLu
